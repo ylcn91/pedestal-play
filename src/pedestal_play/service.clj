@@ -5,7 +5,8 @@
             [ring.util.response :as ring-resp]
             [io.pedestal.log :as log]
             [io.pedestal.http.sse :as sse]
-            [clojure.core.async :as async]))
+            [clojure.core.async :as async]
+            ))
 
 (defn about-page
   [request]
@@ -66,14 +67,14 @@
                             :query-params :counter) "5"))]
     (loop [counter count-num]
       (async/put!
-        event-ch {:name "count"
-                  :data (str counter ", T: "
+        event-ch {:name "Count"
+                  :data (str counter ", Thread: "
                              (.getId (Thread/currentThread)))})
       (Thread/sleep 2000)
       (if (> counter 1)
         (recur (dec counter))
         (do
-          (async/put! event-ch {:name "close" :data "I am done!"})
+          (async/put! event-ch {:name "closing events" :data "I am done!"})
           (async/close! event-ch))))))
 
 ;; Tabular routes
