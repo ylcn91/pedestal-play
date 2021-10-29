@@ -8,8 +8,8 @@
 
                  ;; Remove this line and uncomment one of the next lines to
                  ;; use Immutant or Tomcat instead of Jetty:
-                 [io.pedestal/pedestal.jetty "0.5.9"]
-                 ;; [io.pedestal/pedestal.immutant "0.5.9"]
+                 ;;[io.pedestal/pedestal.jetty "0.5.9"]
+                  [io.pedestal/pedestal.immutant "0.5.9"]
                  ;; [io.pedestal/pedestal.tomcat "0.5.9"]
 
                  [ch.qos.logback/logback-classic "1.2.3" :exclusions [org.slf4j/slf4j-api]]
